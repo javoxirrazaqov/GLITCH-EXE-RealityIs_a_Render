@@ -1,0 +1,360 @@
+
+.gx-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  color: #f4ffe9;
+  background: #030503;
+  font-family: "Courier New", monospace;
+  animation: gx-intro-exit 0.45s ease 2.85s forwards;
+}
+
+.gx-intro-grid {
+  position: absolute;
+  inset: -50%;
+  z-index: -3;
+  background-image:
+    linear-gradient(rgba(183, 255, 54, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183, 255, 54, 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(500px) rotateX(58deg) scale(1.5);
+  animation: gx-grid-move 8s linear infinite;
+  mask-image: linear-gradient(transparent, black 35%, black 75%, transparent);
+}
+
+.gx-intro-noise {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.15;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(183, 255, 54, 0.12) 4px
+  );
+}
+
+.gx-intro-top,
+.gx-intro-bottom {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: rgba(228, 255, 206, 0.52);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.gx-intro-top {
+  top: 34px;
+}
+
+.gx-intro-bottom {
+  bottom: 30px;
+}
+
+.gx-intro-center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(90%, 520px);
+  animation: gx-content-in 0.8s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.gx-intro-logo {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 104px;
+  height: 104px;
+  margin-bottom: 35px;
+  border: 1px solid rgba(183, 255, 54, 0.6);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(183, 255, 54, 0.16),
+    rgba(183, 255, 54, 0.015) 70%
+  );
+  box-shadow:
+    0 0 25px rgba(183, 255, 54, 0.14),
+    inset 0 0 25px rgba(183, 255, 54, 0.08);
+  animation: gx-logo-pulse 1.8s ease-in-out infinite;
+}
+
+.gx-bolt {
+  color: #b7ff36;
+  font-family: Arial, sans-serif;
+  font-size: 78px;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow:
+    0 0 8px #b7ff36,
+    0 0 28px rgba(183, 255, 54, 0.85);
+  animation: gx-bolt-glitch 2.5s steps(1) infinite;
+}
+
+.gx-logo-orbit {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  width: 170px;
+  height: 62px;
+  border: 1px solid rgba(183, 255, 54, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.gx-orbit-one {
+  transform: translate(-50%, -50%) rotate(35deg);
+  animation: gx-orbit-spin 5s linear infinite;
+}
+
+.gx-orbit-two {
+  transform: translate(-50%, -50%) rotate(-35deg);
+  border-color: rgba(183, 255, 54, 0.16);
+  animation: gx-orbit-spin 7s linear infinite reverse;
+}
+
+.gx-intro-title {
+  position: relative;
+  color: #f3ffe8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(30px, 7vw, 54px);
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-align: center;
+  text-shadow: 0 0 22px rgba(183, 255, 54, 0.12);
+  animation: gx-title-flicker 4s linear infinite;
+}
+
+.gx-intro-title span {
+  color: #b7ff36;
+}
+
+.gx-intro-title::before,
+.gx-intro-title::after {
+  position: absolute;
+  inset: 0;
+  content: attr(data-text);
+  pointer-events: none;
+}
+
+.gx-intro-title::before {
+  color: #b7ff36;
+  clip-path: inset(35% 0 50% 0);
+  transform: translateX(-2px);
+  opacity: 0.7;
+  animation: gx-text-glitch 2.2s steps(1) infinite;
+}
+
+.gx-intro-title::after {
+  color: #ff286f;
+  clip-path: inset(65% 0 15% 0);
+  transform: translateX(2px);
+  opacity: 0.5;
+  animation: gx-text-glitch 2.8s steps(1) infinite reverse;
+}
+
+.gx-intro-subtitle {
+  margin: 15px 0 0;
+  color: rgba(233, 255, 217, 0.48);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-align: center;
+}
+
+.gx-loading {
+  width: min(100%, 300px);
+  margin-top: 56px;
+}
+
+.gx-loading-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: rgba(233, 255, 217, 0.65);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.gx-loading-info span:last-child {
+  color: #b7ff36;
+}
+
+.gx-loading-track {
+  height: 3px;
+  overflow: hidden;
+  background: rgba(183, 255, 54, 0.12);
+}
+
+.gx-loading-fill {
+  height: 100%;
+  background: #b7ff36;
+  box-shadow: 0 0 15px #b7ff36;
+  transition: width 0.08s linear;
+}
+
+.gx-intro-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: #b7ff36;
+  opacity: 0;
+  animation: gx-flash 2.6s linear forwards;
+}
+
+@keyframes gx-intro-exit {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.025);
+    pointer-events: none;
+  }
+}
+
+@keyframes gx-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes gx-logo-pulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(183, 255, 54, 0.14),
+      inset 0 0 25px rgba(183, 255, 54, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 42px rgba(183, 255, 54, 0.3),
+      inset 0 0 35px rgba(183, 255, 54, 0.15);
+  }
+}
+
+@keyframes gx-bolt-glitch {
+  0%, 88%, 92%, 100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+  89% {
+    transform: translate(-3px, 1px) skewX(-8deg);
+    opacity: 0.75;
+  }
+  91% {
+    transform: translate(3px, -1px);
+    opacity: 0.9;
+  }
+}
+
+@keyframes gx-text-glitch {
+  0%, 88%, 93%, 100% {
+    opacity: 0;
+  }
+  89%, 91% {
+    opacity: 0.8;
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes gx-title-flicker {
+  0%, 95%, 97%, 100% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.65;
+  }
+}
+
+@keyframes gx-orbit-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(325deg);
+  }
+}
+
+@keyframes gx-grid-move {
+  to {
+    background-position: 0 48px, 48px 0;
+  }
+}
+
+@keyframes gx-flash {
+  0%, 8%, 15%, 100% {
+    opacity: 0;
+  }
+  9% {
+    opacity: 0.08;
+  }
+  10% {
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.035;
+  }
+}
+
+@media (max-width: 600px) {
+  .gx-intro-top,
+  .gx-intro-bottom {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .gx-intro-top {
+    top: 22px;
+  }
+
+  .gx-intro-bottom {
+    bottom: 22px;
+  }
+
+  .gx-intro-logo {
+    width: 88px;
+    height: 88px;
+    margin-bottom: 28px;
+  }
+
+  .gx-bolt {
+    font-size: 65px;
+  }
+
+  .gx-logo-orbit {
+    top: 44px;
+    width: 145px;
+    height: 52px;
+  }
+
+  .gx-intro-subtitle {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+  }
+
+  .gx-loading {
+    margin-top: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gx-intro *,
+  .gx-intro::before,
+  .gx-intro::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
